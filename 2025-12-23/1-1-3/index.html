@@ -13,16 +13,55 @@
       let hobby = ["당구", "탁구"];
       let emptyVal = null;
 
+      console.groupCollapsed("개별 묶음");
+      console.log(username);
+      console.log(age);
+      console.log(isStudent);
+      console.log(hobby);
+      console.log(emptyVal);
+      console.groupCollapsed("type of 변수");
       console.log("username type : " + typeof username);
       console.log("age type : " + typeof age);
       console.log("isStudent type : " + typeof isStudent);
       console.log("hobby type : " + typeof hobby);
       console.log("emptyVal type : " + typeof emptyVal); // object로 나오는 버그 있음
+      console.groupEnd();
 
       let isAdult =
         age > 19
           ? console.log("제 신분은 성인입니다.")
           : console.log("제 신분은 미성년자입니다.");
+
+      // object로 만들어 for in으로 출력해보기
+      let myInformation = {
+        myName: "JunHyeon Park",
+        age: 26,
+        studentStatus: true,
+        hobbies: ["노래방", "겨울레저(보드,스키)"],
+      };
+
+      console.groupCollapsed("객체로 만든 문구 출력");
+      for (let key in myInformation) {
+        console.log(key + ":" + myInformation[key]);
+        console.log("typeof " + key + " : " + typeof myInformation[key]);
+        console.log("-------------");
+      }
+      console.groupEnd();
+
+      // array로 만들어서 for of로 출력해보기
+      let arrayMyInformation = [
+        "Myname: ParkJunHyeon",
+        "age : 26",
+        "I'm student",
+        "hobbies : 스크린골프, 승마",
+        "미성년자하고싶다..",
+      ];
+
+      console.groupCollapsed("배열 목록 출력");
+      for (let info of arrayMyInformation) {
+        console.log(info);
+      }
+      console.groupEnd();
     </script>
   </body>
 </html>
