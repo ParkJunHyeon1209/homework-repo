@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-1-5 homework</title>
+  </head>
+  <body>
+    <script>
+      function calculate(a, b, op = "+") {
+        switch (op) {
+          case "+":
+            return a + b;
+          case "-":
+            return a - b;
+          case "*":
+            return a * b;
+          case "/":
+            if (b === 0) return "0으로 나눌 수 없습니다.";
+            return a / b;
+
+          default:
+            return "잘못된 연산자입니다.";
+        }
+      }
+
+      document.writeln("<h1>콘솔을 확인하세요.</h1>");
+
+      console.log(calculate(10, 5));
+      console.log(calculate(10, 5, "-"));
+      console.log(calculate(10, 5, "*"));
+      console.log(calculate(10, 5, "/"));
+      console.log(calculate(10, 0, "/"));
+    </script>
+  </body>
+</html>

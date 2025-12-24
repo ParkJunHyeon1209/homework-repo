@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-1-4 homework</title>
+  </head>
+  <body>
+    <script>
+      document.writeln("콘솔을 확인하세요.");
+      let num;
+      let input = prompt("2 ~ 9 중 임의의 숫자를 입력하세요 : ");
+      while (1) {
+        if (input < 2 || input > 9) {
+          input = prompt("2~9 사이의 숫자를 다.시. 입력하세요");
+        } else {
+          num = input;
+          break;
+        }
+      }
+
+      console.log(num + "단");
+
+      for (let i = 1; i < 10; i++) {
+        console.log(`${num} X ${i} = ${num * i}`);
+      }
+    </script>
+  </body>
+</html>
