@@ -44,20 +44,44 @@
 
       // 요구사항 3번
       // 선생님 솔직히 이걸 join을 써서 어떻게 하라는건지 도무지 모르겠어요....
+
       console.groupCollapsed("3번 요구사항");
       console.log("장바구니 목록 : ");
-      for (let i = 0; i < cart.length; i++) {
-        for (let key in cart[i]) {
-          console.log(`${key} : ${cart[i][key]}`);
+      // for of 랑 for in이 헷갈려서 썼던방법
+      //   for (let i = 0; i < cart.length; i++) {
+      //     for (let key in cart[i]) {
+      //       console.log(`${key} : ${cart[i][key]}`);
+      //     }
+      //     console.log("-------------------------");
+      //   }
+
+      // 다시 한 방법
+      for (let item of cart) {
+        for (let key in item) {
+          console.log(`${key} : ${item[key]}`);
         }
-        console.log("-------------------------");
+        console.log("-------------------");
       }
       console.groupEnd();
 
       // 요구사항 4번
+      //   console.groupCollapsed("4번 요구사항");
       // 일단 교안보고 이런건가해서 했는데 얘도 잘 모르겠어요...
+      //   cart.sort((a, b) => a.price - b.price);
+      //   copyArray(cart);
+
+      // sort 오름차순 for문으로 만들기
       console.groupCollapsed("4번 요구사항");
-      cart.sort((a, b) => a.price - b.price);
+      let tmp;
+      for (let i = 0; i < cart.length; i++) {
+        for (let j = i + 1; j < cart.length; j++) {
+          if (cart[i].price > cart[j].price) {
+            tmp = cart[j];
+            cart[j] = cart[i];
+            cart[i] = tmp;
+          }
+        }
+      }
       copyArray(cart);
       console.groupEnd();
     </script>
