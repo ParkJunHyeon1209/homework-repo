@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-2-2 homework</title>
+  </head>
+  <body>
+    <script>
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+      // 배열 메서드를 활용해 장바구니 기능을 구현
+      // 요구사항
+      // 1. cart 배열에 상품 추가하기(push)
+      // 2. 특정 상품 삭제하기 (splice + indexOf)
+      // 3. 상품 목록 출력하기 (join)
+      // 4. 가격순 정렬하기 (sort + 비교함수 )
+      // 예상결과 : 상품추가 > 목록출력 > 상품 삭제 > 정렬된 목록
+
+      function copyArray(arr) {
+        let copy = [...arr];
+        console.log(copy);
+      }
+
+      // 요구사항 1번
+      console.group("전체");
+      console.groupCollapsed("1번 요구사항");
+
+      const cart = [];
+      cart.push({ name: "맥북 프로", price: 2500000 });
+      copyArray(cart);
+      cart.push({ name: "아이패드 프로", price: 1500000 });
+      copyArray(cart);
+      cart.push({ name: "아이폰17 프로맥스", price: 2000000 });
+      copyArray(cart);
+      cart.push({ name: "에어팟 맥스", price: 780000 });
+      copyArray(cart);
+      console.groupEnd();
+
+      // 요구사항 2번
+      console.groupCollapsed("2번 요구사항");
+      cart.splice(2, 1);
+      copyArray(cart);
+      console.groupEnd();
+
+      // 요구사항 3번
+      // 선생님 솔직히 이걸 join을 써서 어떻게 하라는건지 도무지 모르겠어요....
+      console.groupCollapsed("3번 요구사항");
+      console.log("장바구니 목록 : ");
+      for (let i = 0; i < cart.length; i++) {
+        for (let key in cart[i]) {
+          console.log(`${key} : ${cart[i][key]}`);
+        }
+        console.log("-------------------------");
+      }
+      console.groupEnd();
+
+      // 요구사항 4번
+      // 일단 교안보고 이런건가해서 했는데 얘도 잘 모르겠어요...
+      console.groupCollapsed("4번 요구사항");
+      cart.sort((a, b) => a.price - b.price);
+      copyArray(cart);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
