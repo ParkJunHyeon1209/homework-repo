@@ -7,8 +7,6 @@
   </head>
   <body>
     <script>
-      "add strict";
-      document.writeln("<h1>콘솔을 확인해주세요</h1>");
       // 배열 메서드를 활용해 장바구니 기능을 구현
       // 요구사항
       // 1. cart 배열에 상품 추가하기(push)
@@ -17,75 +15,58 @@
       // 4. 가격순 정렬하기 (sort + 비교함수 )
       // 예상결과 : 상품추가 > 목록출력 > 상품 삭제 > 정렬된 목록
 
-      function copyArray(arr) {
-        let copy = [...arr];
-        console.log(copy);
-      }
+      "add strict";
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
 
-      // 요구사항 1번
       console.groupCollapsed("1번 요구사항 : 아이템 집어넣기");
-
+      // 1번 요구사항
       const cart = [];
-      cart.push({ name: "맥북 프로", price: 2500000 });
-      copyArray(cart);
-      cart.push({ name: "아이패드 프로", price: 1500000 });
-      copyArray(cart);
-      cart.push({ name: "아이폰17 프로맥스", price: 2000000 });
-      copyArray(cart);
-      cart.push({ name: "에어팟 맥스", price: 780000 });
-      copyArray(cart);
+      cart.push("맥북 프로");
+      console.log([...cart]);
+      cart.push("아이패드 프로");
+      console.log([...cart]);
+      cart.push("아이폰 17프로맥스");
+      console.log([...cart]);
+      cart.push("에어팟 맥스");
+      console.log([...cart]);
       console.groupEnd();
 
-      // 요구사항 2번
-      // indexOf를 어디에 쓰는건가요...? splice하면 특정 위치를 이미 지정한거 아닌가요...?
-
+      // 2번 요구사항
       console.groupCollapsed("2번 요구사항 : 특정 아이템 제거");
-      cart.splice(2, 1);
-      copyArray(cart);
-      console.groupEnd();
-
-      // 요구사항 3번
-      // 선생님 솔직히 이걸 join을 써서 어떻게 하라는건지 도무지 모르겠어요....
-
-      console.groupCollapsed("3번 요구사항 : 장바구니 목록 출력");
-      console.log("장바구니 목록 : ");
-      // for of 랑 for in이 헷갈려서 썼던방법
-      //   for (let i = 0; i < cart.length; i++) {
-      //     for (let key in cart[i]) {
-      //       console.log(`${key} : ${cart[i][key]}`);
-      //     }
-      //     console.log("-------------------------");
-      //   }
-
-      // 다시 한 방법
-      for (let item of cart) {
-        for (let key in item) {
-          console.log(`${key} : ${item[key]}`);
-        }
-        console.log("-------------------");
+      if (cart.indexOf("아이폰 17프로맥스") > -1) {
+        cart.splice(cart.indexOf("아이폰 17프로맥스"), 1);
       }
+      console.log([...cart]);
       console.groupEnd();
 
-      // 요구사항 4번
-      // 일단 교안보고 이런건가해서 했는데 얘도 잘 모르겠어요...
+      // 3번 요구사항
+      const cartList = cart.join(", ");
+      console.log(`장바구니 목록 : ${cartList}`);
 
-      console.groupCollapsed("4번 요구사항 : 가격 오름차순으로 정렬하고 출력");
-      //   cart.sort((a, b) => a.price - b.price);
-      //   copyArray(cart);
-
-      // sort 오름차순 for문으로 만들기
-      let tmp;
-      for (let i = 0; i < cart.length; i++) {
-        for (let j = i + 1; j < cart.length; j++) {
-          if (cart[i].price > cart[j].price) {
-            tmp = cart[j];
-            cart[j] = cart[i];
-            cart[i] = tmp;
-          }
-        }
-      }
-      copyArray(cart);
-      console.groupEnd();
+      // 4번 요구사항
+      const sortedPriceCart = [
+        {
+          name: "맥북 프로",
+          price: 2500000,
+        },
+        {
+          name: "아이패드 프로",
+          price: 1500000,
+        },
+        {
+          name: "아이폰 17프로맥스",
+          price: 2000000,
+        },
+        {
+          name: "에어팟 맥스",
+          price: 780000,
+        },
+      ];
+      console.log("현재 객체 목록");
+      console.log([...sortedPriceCart]);
+      sortedPriceCart.sort((a, b) => a.price - b.price);
+      console.log("가격 오름차순 후 정렬 객체 목록");
+      console.log([...sortedPriceCart]);
     </script>
   </body>
 </html>

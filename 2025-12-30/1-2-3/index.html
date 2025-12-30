@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-2-3 homework</title>
+  </head>
+  <body>
+    <script>
+      "add strict";
+      document.writeln("<h1>콘솔을 확인해주세요.</h1>");
+
+      // 1번 요구사항
+      const student = {
+        name: "박준현",
+        age: 26.99,
+        scores: {
+          math: 90,
+          english: 70,
+        },
+      };
+      console.log({ "내 정보": student }); // 객체 출력할 때 이렇게 하면 앞에 문자열이 키값이 됨.
+
+      // 2번 요구사항
+      function getProperty(obj, key) {
+        return obj[key];
+      }
+
+      // 3번 요구사항
+      function avgScores(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sum += arr[i];
+        }
+        return sum / arr.length;
+      }
+
+      // 2번 요구사항 접근
+      const getName = getProperty(student, "name");
+      console.log(`user name : ${getName}`);
+      const getAge = getProperty(student, "age");
+      console.log(`user age : ${getAge}`);
+      const getScores = getProperty(student, "scores");
+      console.log({ "user scores": getScores });
+
+      // 3번 요구사항 출력
+      const scoreList = Object.values(getScores);
+      console.log(`Average scores : ${avgScores(scoreList)}`);
+
+      // 4번 요구사항
+      // const copy = structuredClone(student);  //최신방식
+      const copy = JSON.parse(JSON.stringify(student)); // 옛날방식
+      copy.scores.math = 100;
+      copy.isCopied = true;
+      console.log({ student }); // 원본객체
+
+      console.log({ copy }); // 카피객체
+    </script>
+  </body>
+</html>
