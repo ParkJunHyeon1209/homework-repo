@@ -28,11 +28,15 @@
 
       const btnWrap = document.querySelector(".btn-wrap");
       const btn = document.querySelector("#myBtn");
+      const btnAll = document.querySelectorAll("#myBtn");
       const result = document.querySelector("#result");
 
       const resultNode = document.createElement("p");
       resultNode.classList.add("hidden");
       btnWrap.append(resultNode);
+
+      console.log("quertySelector : ", btn);
+      console.log("quertySelectorAll : ", btnAll);
 
       btn.addEventListener("click", function () {
         resultNode.classList.toggle("hidden");
