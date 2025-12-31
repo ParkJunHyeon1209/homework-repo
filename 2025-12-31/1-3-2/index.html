@@ -40,6 +40,11 @@
         border: 5px solid rgb(182, 16, 182);
       }
 
+      .profile-name {
+        font-size: 25px;
+        font-weight: 700;
+      }
+
       .result {
         width: 50%;
         background-color: #ddd;
@@ -89,11 +94,8 @@
       result.addEventListener("click", function () {
         console.log(`내 이름 : ${name.dataset.userId}`);
         name.textContent = "박준현";
-        name.style.fontSize = "25px";
-        name.style.fontWeight = "700";
         cardWrap.classList.toggle("dark-mode");
         result.classList.toggle("dark-mode");
-
         const isDark = cardWrap.classList.contains("dark-mode");
         result.textContent = isDark ? "☀︎ Light Mode ☀︎" : "☾ Dark Mode ☾";
       });
