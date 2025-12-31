@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      "add strict";
+      "use strict";
       document.writeln("<h1>콘솔을 확인해주세요.</h1>");
 
       // 1번 요구사항
@@ -37,24 +37,31 @@
 
       // 2번 요구사항 접근
       const getName = getProperty(student, "name");
-      console.log(`user name : ${getName}`);
+      console.log(`User name : ${getName}`);
       const getAge = getProperty(student, "age");
-      console.log(`user age : ${getAge}`);
+      console.log(`User age : ${getAge}`);
       const getScores = getProperty(student, "scores");
-      console.log({ "user scores": getScores });
+      console.log({ "student scores": getScores });
 
       // 3번 요구사항 출력
       const scoreList = Object.values(getScores);
-      console.log(`Average scores : ${avgScores(scoreList)}`);
+      console.log(`Original's average scores : ${avgScores(scoreList)}`);
 
       // 4번 요구사항
       // const copy = structuredClone(student);  //최신방식
       const copy = JSON.parse(JSON.stringify(student)); // 옛날방식
       copy.scores.math = 100;
-      copy.isCopied = true;
-      console.log({ student }); // 원본객체
+      copy.scores.english = 90;
+      console.log({ "copy scores ": copy.scores });
 
-      console.log({ copy }); // 카피객체
+      console.log("Verify after replicating the student");
+      console.log(`Student scores average : ${avgScores(scoreList)}`); // 원본객체
+
+      console.log(
+        `Copy scores average : ${avgScores(
+          Object.values(getProperty(copy, "scores"))
+        )}`
+      ); // 카피객체
     </script>
   </body>
 </html>

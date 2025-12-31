@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-3-2 homework</title>
+    <style>
+      .profile-card {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .result {
+        width: 100%;
+        max-width: 10%;
+        border-radius: 5px;
+      }
+
+      .dark-mode {
+        background-color: #222;
+        color: white;
+      }
+
+      .dark-mode > button {
+        background-color: #444;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- querySelector로 .profile-name 요소를 선택하고 textContent를 홍길동으로 변경 -->
+    <!-- classList.toggle로 .profile-card에 dark-mode 클래스 토글 기능 구현 -->
+    <!--  dataset으로 data-user-id 값을 읽어 콘솔에 출력 -->
+    <!-- createElement와 appendChild로 새 태그 요소 추가 -->
+    <!-- 예상 결과 버튼 클릭 시 이름이 변경되고, 다크모드 토글되며, 콘솔에 user-id가 출력 -->
+
+    <div class="profile-card">
+      대충 프로필 카드
+      <div class="profile-name" data-user-id="준현">박준현</div>
+      <button class="result">예상 결과 버튼</button>
+    </div>
+
+    <script>
+      "use strict";
+
+      const name = document.querySelector(".profile-name");
+      const card = document.querySelector(".profile-card");
+      const result = document.querySelector(".result");
+
+      result.addEventListener("click", function () {
+        console.log(name.dataset.userId);
+        name.textContent = "홍길동";
+        card.classList.toggle("dark-mode");
+      });
+    </script>
+  </body>
+</html>

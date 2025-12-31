@@ -15,7 +15,7 @@
       // 4. 가격순 정렬하기 (sort + 비교함수 )
       // 예상결과 : 상품추가 > 목록출력 > 상품 삭제 > 정렬된 목록
 
-      "add strict";
+      "use strict";
       document.writeln("<h1>콘솔을 확인해주세요</h1>");
 
       console.groupCollapsed("1번 요구사항 : 아이템 집어넣기");
@@ -40,8 +40,10 @@
       console.groupEnd();
 
       // 3번 요구사항
+      console.groupCollapsed("3번 요구사항");
       const cartList = cart.join(", ");
       console.log(`장바구니 목록 : ${cartList}`);
+      console.groupEnd();
 
       // 4번 요구사항
       const sortedPriceCart = [
@@ -62,11 +64,13 @@
           price: 780000,
         },
       ];
+      console.groupCollapsed("4번 요구사항 가격으로 정렬 후 출력");
       console.log("현재 객체 목록");
       console.log([...sortedPriceCart]);
       sortedPriceCart.sort((a, b) => a.price - b.price);
       console.log("가격 오름차순 후 정렬 객체 목록");
       console.log([...sortedPriceCart]);
+      console.groupEnd();
     </script>
   </body>
 </html>
