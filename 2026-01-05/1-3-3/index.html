@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-3-3 homework</title>
+  </head>
+  <body>
+    <div class="button-group">
+      <button data-action="add">추가</button><br /><br />
+      <button data-action="edit">수정</button><br /><br />
+      <button data-action="delete">삭제</button>
+    </div>
+
+    <script>
+      "use strict";
+
+      const btnGroup = document.querySelector(".button-group");
+
+      btnGroup.addEventListener("click", function (e) {
+        const btn = e.target.closest("button");
+
+        if (!btn) {
+          return;
+        } else if (btn.dataset.action === "add") {
+          console.log("Add Clicked");
+        } else if (btn.dataset.action === "edit") {
+          console.log("Edit Clicked");
+        } else if (btn.dataset.action === "delete") {
+          console.log("Delete Clicked");
+        }
+      });
+    </script>
+  </body>
+</html>
