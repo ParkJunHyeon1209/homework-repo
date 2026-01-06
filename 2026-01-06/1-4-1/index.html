@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-4-1 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      document.writeln("<h1>콘솔을 확인하세요</h1>");
+      const users = [
+        {
+          name: "Kim",
+          profile: {
+            bio: "Hi",
+          },
+        },
+        {
+          name: "Lee",
+          profile: null,
+        },
+      ];
+
+      for (let user of users) {
+        const profileBio = user.profile?.bio ?? "소개 없음";
+        // user.profile = user.profile ?? { bio: "소개 없음" };
+        console.log(`<div>${user.name}: ${profileBio}</div>`);
+      }
+    </script>
+  </body>
+</html>
