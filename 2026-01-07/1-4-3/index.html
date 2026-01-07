@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-4-3 homework</title>
+  </head>
+  <body>
+    <script>
+      "use script";
+
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+      function createCounter() {
+        let count = 0;
+
+        return {
+          increment() {
+            return (count += 1);
+          },
+          decrement() {
+            return (count -= 1);
+          },
+          getValue() {
+            return count;
+          },
+          reset() {
+            return (count = 0);
+          },
+        };
+      }
+      const counter1 = createCounter();
+      const counter2 = createCounter();
+      console.log(`counter1.conter : ${counter1.increment()}`);
+      console.log(`counter2.conter : ${counter2.increment()}`);
+      console.log(`counter2.conter reset => ${counter2.reset()}`);
+    </script>
+  </body>
+</html>

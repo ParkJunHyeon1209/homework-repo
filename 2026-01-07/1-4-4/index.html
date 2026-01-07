@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-4-4 homework</title>
+  </head>
+  <body>
+    <script>
+      //   "use strict";
+      document.writeln("<h1>콘솔을 확인하세요</h1>");
+      const hero = {
+        heroName: "Batman",
+        call() {
+          console.log(`사라질 수도 나올수도 있는 아이 : ${this.heroName}`);
+        },
+        callLater1() {
+          setTimeout(function () {
+            console.log(`사라진 아이 : ${this.heroName}`);
+          }, 3000);
+        },
+        callLater2() {
+          setTimeout(() => console.log(`나온 아이 : ${this.heroName}`), 5000);
+        },
+      };
+
+      const stolenCall = hero.call;
+      stolenCall(); // 명시적으로 가르키던 this가 할당하는순간 연결이 끊겨서 윈도우를 가르킨다
+
+      const fixedCall = hero.call.bind(hero);
+      fixedCall();
+
+      hero.callLater1();
+      hero.callLater2();
+    </script>
+  </body>
+</html>
