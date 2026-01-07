@@ -25,7 +25,7 @@
       };
 
       const stolenCall = hero.call;
-      stolenCall(); // 명시적으로 가르키던 this가 할당하는순간 연결이 끊겨서 윈도우를 가르킨다
+      stolenCall(); // 명시적으로 가르키던 this가 할당하는순간 연결이 끊겨서 윈도우를 가르키기 때문에 undefined 출력
 
       const fixedCall = hero.call.bind(hero);
       fixedCall();
