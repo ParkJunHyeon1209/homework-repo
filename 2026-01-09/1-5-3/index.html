@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-5-3 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+
+      // 이 코드를 async function deliverPizza()를 만들기
+      // 각 단계를 await로 순차 실행
+      // try-catch로 에러 처리 통합
+      // 성공시 "바달 완료!" 콘솔 출력
+
+      // orderPizza("Pepperoni", (err, orderId) => {
+      //   if (err) return handleError(err);
+
+      //   makeDough(orderId, (err, dough) => {
+      //     if (err) return handleError(err);
+
+      //     bakePizza(dough, (err, pizza) => {
+      //       if (err) return handleError(err);
+      //       console.log(`${pizza.name} 배달 완료! 🍕`);
+      //     });
+      //   });
+      // });
+
+      // 1초 뒤 성공하는 가짜 함수
+      const orderPizza = (name) =>
+        new Promise((resolve) => {
+          setTimeout(() => resolve(name), 1000);
+        });
+
+      const makeDough = (orderId) =>
+        new Promise((resolve) => {
+          setTimeout(() => resolve({ dough: true }), 1000);
+        });
+
+      const bakePizza = (dough) =>
+        new Promise((resolve) => {
+          setTimeout(() => resolve({ name: "Pepperoni" }), 1000);
+        });
+
+      async function deliverPizza() {
+        try {
+          const order = await orderPizza("Pepperoni");
+          // console.log(`order: ${order}`);
+          const dough = await makeDough(order);
+          // console.log({ dough });
+          const bake = await bakePizza(dough);
+          // console.log({ bake });
+
+          console.log(`${bake.name} 배달 완료`);
+        } catch (err) {
+          console.error("배달 실패!", err);
+        }
+      }
+
+      deliverPizza();
+    </script>
+  </body>
+</html>
