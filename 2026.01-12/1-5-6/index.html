@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1-5-6 homework</title>
+    <style>
+      :root {
+        --bg-color: #1a1a1a;
+        --container-bg: #2d2d2d;
+        --text-color: #eeeeee;
+        --accent-color: #6366f1;
+        --accent-hover: #4f46e5;
+        --danger-color: #ef4444;
+        --danger-hover: #dc2626;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Pretendard", -apple-system, sans-serif;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+
+      .container {
+        background-color: var(--container-bg);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      /* 입력창과 추가 버튼 영역 */
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      input[type="text"] {
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #444;
+        background-color: #1a1a1a;
+        color: white;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      input[type="text"]:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+
+      #add-btn {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background-color: var(--accent-color);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      #add-btn:hover {
+        background-color: var(--accent-hover);
+      }
+
+      /* 리스트 스타일 */
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+      }
+
+      li {
+        background-color: #3d3d3d;
+        margin-bottom: 10px;
+        padding: 12px 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 삭제 버튼 스타일 */
+      li button {
+        background-color: var(--danger-color);
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: background 0.2s;
+      }
+
+      li button:hover {
+        background-color: var(--danger-hover);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input
+        id="todo-input"
+        type="text"
+        autocomplete="off"
+        placeholder="할 일 입력"
+      />
+      <button id="add-btn">추가</button>
+
+      <ul id="todo-list"></ul>
+    </div>
+    <script>
+      "use strict";
+
+      const input = document.querySelector("#todo-input");
+      const add = document.querySelector("#add-btn");
+      const list = document.querySelector("#todo-list");
+      const saved = localStorage.getItem("todos");
+      const todos = saved ? JSON.parse(saved) : [];
+
+      // 렌더함수 선언
+      function render() {
+        list.innerHTML = "";
+        todos.forEach((todo) => {
+          const li = document.createElement("li");
+          li.textContent = todo;
+          list.appendChild(li);
+
+          const del = document.createElement("button");
+          del.textContent = "삭제";
+          li.append(del);
+
+          // del.addEventListener("click", function () {
+          //   li.remove();
+          //   todos.pop(todo);
+          //   localStorage.setItem("todos", JSON.stringify(todos));
+          // });
+
+          del.addEventListener("click", function () {
+            li.remove();
+            // 클릭한 todo와 일치하지 않는 것들만 남겨서 새로 저장 (불변성 유지)
+            const newTodos = todos.filter((t) => t !== todo);
+            // 원본 배열 업데이트를 위해 splice를 쓰거나 다시 할당해야 함
+            todos.length = 0;
+            todos.push(...newTodos);
+
+            localStorage.setItem("todos", JSON.stringify(todos));
+          });
+        });
+      }
+
+      // 버튼클릭시 리스트 추가 함수 선언
+      function addList() {
+        const inputed = input.value.trim();
+        if (!inputed) return;
+
+        const li = document.createElement("li");
+        li.textContent = inputed;
+        list.append(li);
+
+        todos.push(inputed);
+        localStorage.setItem("todos", JSON.stringify(todos));
+
+        const del = document.createElement("button");
+        del.textContent = "삭제";
+        li.append(del);
+
+        // del.addEventListener("click", function () {
+        //   li.remove();
+        //   todos.pop(inputed);
+        //   localStorage.setItem("todos", JSON.stringify(todos));
+        // });
+
+        del.addEventListener("click", function () {
+          li.remove();
+
+          // 1. 현재 입력했던 값(inputed)과 같지 않은 데이터만 남깁니다.
+          const index = todos.indexOf(inputed); // 배열에서 해당 값의 위치를 찾음
+          if (index > -1) {
+            todos.splice(index, 1); // 해당 위치의 데이터 1개만 삭제
+          }
+
+          // 2. 변경된 배열을 다시 저장합니다.
+          localStorage.setItem("todos", JSON.stringify(todos));
+        });
+
+        input.value = "";
+      }
+
+      document.addEventListener("DOMContentLoaded", render);
+
+      add.addEventListener("click", addList);
+    </script>
+  </body>
+</html>
