@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-2-2 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      const myName = "ParkJunHyeon";
+
+      function reverse(str) {
+        const reverseStr = Array(...str)
+          .reverse()
+          .join("");
+        return reverseStr;
+      }
+
+      function padthree(num) {
+        return String(num).padStart(3, "0");
+      }
+
+      function removeAll(str, char) {
+        return str.replaceAll(char, "");
+      }
+
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+
+      console.log("My name is " + myName);
+      console.log("Reverse my name is " + reverse(myName));
+      console.log("I haven't destroy my name > " + myName);
+      console.log(padthree(5));
+      console.log(removeAll("banana", "a"));
+    </script>
+  </body>
+</html>

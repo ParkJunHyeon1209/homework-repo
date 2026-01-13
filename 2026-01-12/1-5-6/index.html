@@ -137,7 +137,6 @@
       const saved = localStorage.getItem("todos");
       const todos = saved ? JSON.parse(saved) : [];
 
-      // 렌더함수 선언
       function render() {
         list.innerHTML = "";
         todos.forEach((todo) => {
@@ -148,12 +147,6 @@
           const del = document.createElement("button");
           del.textContent = "삭제";
           li.append(del);
-
-          // del.addEventListener("click", function () {
-          //   li.remove();
-          //   todos.pop(todo);
-          //   localStorage.setItem("todos", JSON.stringify(todos));
-          // });
 
           del.addEventListener("click", function () {
             li.remove();
