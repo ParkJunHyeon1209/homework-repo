@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3-3-3 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      async function getPosts() {
+        try {
+          const url = "https://jsonplaceholder.typicode.com/posts";
+          const res = await fetch(url);
+          const data = await res.json();
+          console.log(data);
+        } catch (e) {
+          console.error("에러", e.message);
+        }
+      }
+
+      getPosts();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-3-1 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+
+      function getDivisors(n) {
+        const divisors = [];
+        for (let i = 1; i <= n; i++) {
+          if (n % i == 0) divisors.push(i);
+        }
+
+        return divisors;
+      }
+
+      function countDivisors(n) {
+        const count = getDivisors(n);
+        return count.length;
+      }
+
+      function sumDivisors(n) {
+        const divisors = getDivisors(n);
+        return divisors.reduce((acc, cur) => acc + cur, 0);
+      }
+
+      const n = 12;
+      console.log(getDivisors(n));
+      console.log("약수의 갯수" + countDivisors(n));
+      console.log("약수의 총 합" + sumDivisors(n));
+    </script>
+  </body>
+</html>

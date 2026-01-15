@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-2-3 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+
+      function rollDice() {
+        return Math.floor(Math.random() * 6) + 1;
+      }
+
+      function getScore(a, b) {
+        return Math.abs(a - b);
+      }
+
+      let a = rollDice();
+      let b = rollDice();
+
+      console.log(
+        `첫 번째 값 ${a}, 두 번째 값 ${b}, 두 값의 차이 ${getScore(a, b)}`
+      );
+    </script>
+  </body>
+</html>

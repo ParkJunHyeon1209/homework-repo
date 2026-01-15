@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-3-2 homework</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+
+      // 문제 설명
+      // 양의 정수 n이 매개변수로 주어집니다. n × n 배열에 1부터 n^2 까지 정수를
+      // 인덱스 [0][0]부터 시계방향 나선형으로 배치한 이차원 배열을 return 하는 solution 함수를 작성해 주세요.
+
+      // 제한사항
+      // 1 ≤ n ≤ 30
+
+      // 혼자 주절거리는 생각
+
+      // 의사코드 생성
+      //    빈 배열(result) 생성
+
+      function solution(n) {
+        const result = [];
+        const numbers = [];
+        const dx = [-1, 0, 1, 0];
+        const dy = [-1, 0, 1, 0];
+
+        // numbers에 숫자 담기
+        for (let i = 0; i < n; i++) {
+          result[i] = [];
+          for (let j = 0; j < n; j++) {
+            result[i][j] = 0;
+          }
+        }
+
+        console.log(result);
+        return result;
+      }
+
+      solution(4);
+    </script>
+  </body>
+</html>
