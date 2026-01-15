@@ -3,44 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2-3-2 homework</title>
+    <title>2-2-2 homework</title>
   </head>
   <body>
     <script>
       "use strict";
-      document.writeln("<h1>콘솔을 확인해주세요</h1>");
+      // 정수 배열 arr, query
+      // 인덱스가 짝수면 arr에서 query[i]번 인덱스를 제외하고 query[i] 뒷부분 잘라버림(splice?)
+      // 홀수 인덱스에서는 arr에서 query[i]번 인덱스를 제외하고 query[i]번 인덱스 앞부분을 잘라버림
+      // 작업을 마친 후 arr의 부분 배열을 리턴
 
-      // 문제 설명
-      // 양의 정수 n이 매개변수로 주어집니다. n × n 배열에 1부터 n^2 까지 정수를
-      // 인덱스 [0][0]부터 시계방향 나선형으로 배치한 이차원 배열을 return 하는 solution 함수를 작성해 주세요.
+      // 해결 방법
+      //  query를 순회하는 반복문
+      //      query의 인덱스가 짝수면
+      //          arr에서 query[i] 찾아서 그 뒤를 모두 제거
+      //      query의 인덱스가 홀수면
+      //          arr에서 query[i] 찾아서 그 앞을 모두 제거
+      //  return arr
 
-      // 제한사항
-      // 1 ≤ n ≤ 30
-
-      // 혼자 주절거리는 생각
-
-      // 의사코드 생성
-      //    빈 배열(result) 생성
-
-      function solution(n) {
-        const result = [];
-        const numbers = [];
-        const dx = [-1, 0, 1, 0];
-        const dy = [-1, 0, 1, 0];
-
-        // numbers에 숫자 담기
-        for (let i = 0; i < n; i++) {
-          result[i] = [];
-          for (let j = 0; j < n; j++) {
-            result[i][j] = 0;
+      function solution(arr, query) {
+        for (let i = 0; i < query.length; i++) {
+          let index = query[i];
+          if (i % 2 == 0) {
+            arr.splice(index + 1);
+          } else {
+            arr.splice(0, index);
           }
         }
-
-        console.log(result);
-        return result;
+        return arr;
       }
-
-      solution(4);
     </script>
   </body>
 </html>
