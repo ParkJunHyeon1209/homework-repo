@@ -14,19 +14,20 @@
             "https://jsonplaceholder.typicode.com/posts/1"
           );
 
+          console.log(response);
           if (!response.ok) {
             if (response.status === 404) {
               throw new Error("404 NOT FOUND");
             } else if (response.status === 401) {
               throw new Error("LOGIN IS REQUIRED");
             } else {
-              throw new Error(`HTTP 에러: ${response.status}`);
+              throw new Error(`HTTP ERROR: ${response.status}`);
             }
           }
 
-          return console.log(await response.json());
+          console.log(await response.json());
         } catch (error) {
-          console.error("요청 실패:", error.message);
+          console.error("Request Fail : ", error.message);
         }
       }
 
