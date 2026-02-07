@@ -1,0 +1,168 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img,
+ul,
+ol,
+li,
+form,
+fieldset,
+label,
+legend,
+input,
+textarea,
+button,
+table,
+caption,
+tbody,
+thead,
+tfoot,
+tr,
+th,
+td,
+article,
+aside,
+section,
+header,
+main,
+nav,
+footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: 'Pretendard'sans-serif;
+}
+
+html {
+  min-height: 100dvh;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #ffffff;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  border: 1px solid;
+}
+
+form>h1 {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  font-size: 32px;
+}
+
+form>h1::after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 1px;
+  background-color: black;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.email-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="email"] {
+  border: 1px solid;
+  padding: 5px 10px;
+  width: 60%;
+}
+
+.check-email {
+  text-align: center;
+  border: 1px solid;
+  padding: 5px 10px;
+  background-color: #a977ed;
+  border: 1px solid transparent;
+  color: white;
+}
+
+.pw-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pw-wrap>input {
+  border: 1px solid;
+  padding: 5px 10px;
+}
+
+.agree-wrap>label {
+  display: flex;
+  gap: 8px;
+}
+
+.email-error, .pw-error, .agree-error {
+  color: red;
+}
+
+.email-success, .pw-success {
+  color: rgb(125, 181, 41);
+}
+
+.submit-btn[disabled] {
+  cursor: no-drop
+}
