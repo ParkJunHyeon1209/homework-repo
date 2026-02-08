@@ -36,7 +36,7 @@ export default function ShoppingCart() {
           {items.map((item) => (
             <li key={item.item}>
               <button onClick={() => add(item)}>
-                {item.item} ({item.price} +)
+                {item.item} ({item.price}) +
               </button>
             </li>
           ))}
