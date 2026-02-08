@@ -126,3 +126,8 @@ button {
 .total {
   text-align: end;
 }
+
+.btn-wrap {
+  display: flex;
+  gap: 8px;
+}

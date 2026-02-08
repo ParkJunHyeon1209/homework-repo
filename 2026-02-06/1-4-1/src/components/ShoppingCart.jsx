@@ -26,7 +26,17 @@ export default function ShoppingCart() {
   }
 
   function del(id) {
-    setList(list.filter((item) => item.id != id));
+    setList(list.filter((item) => item.id !== id));
+  }
+
+  function minusCount(id) {
+    const updatedList = list.map((i) =>
+      i.id === id ? { ...i, count: i.count - 1 } : i,
+    );
+
+    const filteredList = updatedList.filter((i) => i.count > 0);
+
+    setList(filteredList);
   }
 
   return (
@@ -45,7 +55,10 @@ export default function ShoppingCart() {
           {list.map((item) => (
             <li key={item.id}>
               {item.item} X {item.count}
-              <button onClick={() => del(item.id)}>삭제</button>
+              <div className="btn-wrap">
+                <button onClick={() => minusCount(item.id)}>-</button>
+                <button onClick={() => del(item.id)}>삭제</button>
+              </div>
             </li>
           ))}
         </ul>
