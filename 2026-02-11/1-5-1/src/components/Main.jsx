@@ -9,7 +9,8 @@ export default function Main() {
 
   return (
     <div>
-      {lang === "ko" ? <p>안녕하세요</p> : <p>Hello</p>}
+      {lang === "ko" ? <h2>안녕하세요</h2> : <h2>Hello</h2>}
+      {lang === "ko" ? <p>환영합니다</p> : <p>Welcome</p>}
       <button onClick={handleLang} type="button">
         {lang === "ko" ? "현재 언어 : " : "Current Lang : "} {lang}
       </button>
