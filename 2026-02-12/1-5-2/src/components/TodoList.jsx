@@ -27,7 +27,7 @@ const todosReducer = (state, action) => {
       };
 
     case "INPUT":
-      return { todos: [...state.todos], input: action.payload };
+      return { ...state, input: action.payload };
 
     default:
       return state;
