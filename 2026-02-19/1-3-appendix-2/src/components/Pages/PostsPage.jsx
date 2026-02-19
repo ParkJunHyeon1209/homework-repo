@@ -27,7 +27,7 @@ export default function PostsPage() {
   const postList = [
     { id: 1, title: "1. 리액트 너무 어렵다" },
     { id: 2, title: "2. SPA라우팅 너무 어렵다" },
-    { id: 3, title: "Router 포기하고싶다" },
+    { id: 3, title: "3. Router 포기하고싶다" },
   ];
 
   return (
