@@ -33,6 +33,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/posts" element={<PostsPage />} />
           <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </MainLayOut>
     </>
