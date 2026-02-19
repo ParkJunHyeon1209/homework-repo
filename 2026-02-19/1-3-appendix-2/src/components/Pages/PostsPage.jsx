@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Post1 from "../Post1";
 import Post2 from "../Post2";
 import Post3 from "../Post3";
-import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Posts = styled.div`
   padding: 24px 32px;
@@ -20,14 +20,6 @@ const Posts = styled.div`
     border-radius: 8px;
   }
 `;
-
-function PostDetail() {
-  const { id } = useParams();
-
-  if (id === "1") return <Post1 />;
-  else if (id === "2") return <Post2 />;
-  else if (id === "3") return <Post3 />;
-}
 
 export default function PostsPage() {
   const navigate = useNavigate();
@@ -49,10 +41,6 @@ export default function PostsPage() {
       <button type="button" onClick={() => navigate(-1)}>
         홈으로 가기
       </button>
-
-      <Routes>
-        <Route path="/posts/:id" element={<PostDetail />} />
-      </Routes>
     </Posts>
   );
 }
