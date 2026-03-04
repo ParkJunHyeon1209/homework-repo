@@ -1,13 +1,13 @@
 let myName: string = "박준현";
 let age: number = 25;
-let isGraduate: boolean = true;
+let isGraduated: boolean = true;
 let lecture: string[] = ["프론트엔드 부트캠프"];
 
 type Point3D = [x: number, y: number, z: number];
 
-let role: "admin" | "manager" | "user";
+type Role = "admin" | "manager" | "user";
 
-let SubjectScores: Record<string, number>;
+type SubjectScores = Record<string, number>;
 
 type BasicUser = { name: string; age: number };
 type Contact = { email: string; tel: string };
